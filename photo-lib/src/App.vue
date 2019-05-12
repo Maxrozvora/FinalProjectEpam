@@ -1,20 +1,32 @@
 <template>
   <div id="app">
     <app-header></app-header>
-    <post-item></post-item>
+    <app-body
+        :posts="posts"
+        :filters="filters"
+    ></app-body>
     <app-footer></app-footer>
   </div>
 </template>
 
 <script>
   import Header from './components/Header'
-  import PostItem from './components/PostItem'
+  import AppBody from './components/AppBody'
   import Footer from './components/Footer'
+
+  import posts from "./data/posts"
+  import filters from "./data/filters"
 
   export default {
     name: 'App',
+    data () {
+      return {
+        posts,
+        filters
+      }
+    },
     components: {
-      'post-item': PostItem,
+      'app-body': AppBody,
       'app-header': Header,
       'app-footer': Footer
     }
