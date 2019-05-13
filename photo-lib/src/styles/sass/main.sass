@@ -3,124 +3,75 @@
 @import "libs"
 
 ::placeholder
-	color: #666
+  color: #666
 
 ::selection
-	background-color: $accent
-	color: $text-color
+  background-color: $accent
+  color: $text-color
 
 html, body
-	height: 100%
+  height: 100%
 
 body
-	font-size: 18px
-	min-width: 320px
-	position: relative
-	line-height: 1.5
-	font-family: $default-font
-	overflow-x: hidden
-	color: $text-color
-	input, textarea
-		border: #666 1px solid
-		outline: none
-		&:focus:required:invalid
-			border-color: red
-		&:required:valid
-			border-color: green
+  font-size: 18px
+  min-width: 320px
+  position: relative
+  line-height: 1.5
+  font-family: $default-font
+  overflow-x: hidden
+  color: $text-color
+
+  input, textarea
+    border: #666 1px solid
+    outline: none
+
+    &:focus:required:invalid
+      border-color: red
+
+    &:required:valid
+      border-color: green
 
 .img-responsive
-	display: block
-	max-width: 100%
-	height: auto
-	&.img-width
-		width: 100%
+  display: block
+  max-width: 100%
+  height: auto
+
+  &.img-width
+    width: 100%
 
 .text-center
-	text-align: center
+  text-align: center
 
-a 
-	color: $accent
-	text-decoration: underline
-	&:hover, &:focus
-		color: $accent
+a
+  color: $accent
+  text-decoration: underline
 
-.top-line
-	background-color: $dark
-	position: relative
-	height: 65px
-	border-bottom: 1px solid #545454
-
-.logo
-	font-family: baron-g, sans-serif
-	font-size: 23px
-	color: #ffffff
-	display: inline-block
-	text-decoration: none
-	position: absolute
-	padding-left: 30px
-	left: 0
-	line-height: 65px
-	&:hover, &:focus
-		text-decoration: none
-		color: #ffffff
-	span
-		color: $accent
-
-.main-menu
-	padding: 0 100px
-	width: 100%
-	text-align: center
-	&__list
-		list-style-type: none
-		padding: 0
-		margin: 0
-	&__item
-		display: inline-block
-		margin-right: -4px
-		border-right: 1px solid #545454
-		position: relative
-		&.active
-			a
-				color: #ffffff
-				background-color: lighten($dark, 5)
-				border-bottom: 1px solid #545454
-		&:hover
-			a
-				color: #ffffff
-				background-color: lighten($dark, 8)
-		&:hover
-			.main-menu__sub-menu
-				display: block
-	&__item:first-child
-		border-left: 1px solid #545454
-	&__link
-		color: #C6CAD9
-		text-decoration: none
-		text-transform: uppercase
-		font-size: 16px
-		font-weight: bold
-		padding: 0 15px
-		line-height: 64px
-		display: block
-		transition: color .25s ease, background-color .25s ease
-	&__sub-menu
-		display: none
-		position: absolute
-		list-style-type: none
-		padding: 0
-		margin: 0
-		z-index: 5
-	&__item-sub
-		margin-right: -4px
-		border-right: 1px solid #545454
-		border-left: 1px solid #545454
-		border-bottom: 1px solid #545454
+  &:hover, &:focus
+    color: $accent
 
 
 .post-wrapper
-	display: grid
-	max-width: 1346px
-	margin: 0 auto
-	grid-template-columns: repeat(4, 1fr)
-	grid-gap: 20px
-@import "media" // Always at the end
+  display: grid
+  max-width: 1346px
+  margin: 0 auto
+  grid-template-columns: repeat(4, 1fr)
+  grid-gap: 20px
+
+/*==========  Desktop First  ==========*/
+
+// ≥1200px
+//@media (max-width: 1200px)
+// ≥992px
+@media (max-width: 992px)
+  .post-wrapper
+    grid-template-columns: repeat(3, 1fr)
+// ≥768px
+@media (max-width: 768px)
+  .post-wrapper
+    grid-template-columns: repeat(2, 1fr)
+
+// ≥576px
+@media (max-width: 576px)
+  .post-wrapper
+    grid-template-columns: repeat(1, 1fr)
+
