@@ -8,118 +8,17 @@
 
 // ≥992px
 +media-breakpoint-down(md)
-  .main-menu
-    display: none
-    padding: 20px
-  .mobile-menu-button
-    display: block
-
-  .item-title-content
-    padding: 40px 30px
-
-  .first-section, .second-section, 
-    padding: $gutter/2 0
-
-  .third-section
-    padding: $gutter 0 30px
-    > div > div > div:last-of-type
-      .col-item
-        border-bottom: 0
-        padding-bottom: 0
-        margin-bottom: 0
-
-
-
-  
+  .post-wrapper
+    grid-template-columns: repeat(3, 1fr)
 // ≥768px
 +media-breakpoint-down(sm)
-  .container-fluid
-    padding: 0  $gutter/2 
-  
-  .top-add
-    padding-bottom: $gutter/2
-  
-
-  .no-gutters
-    .pattern
-      margin-bottom: $gutter/2
-
-  .item-news
-    margin: $gutter/2 0 0 
-  
-  .col-item
-    margin-bottom: $gutter
-    padding-bottom: $gutter
-    border-bottom: 1px solid rgba(#ffffff, .05)
-    margin-top: 0
-    &-meta, h4, .item-comments
-      margin: 0 $gutter/2
-  .third-section
-  padding: $gutter 0 30px
-  > div > div > div:first-of-type
-    margin-top: 12px
-
-  .cat-header
-    &-block
-      padding: 50px
-      h1, h2
-        font-size: 28px
-
-  .cat-list
-    padding-top: 0
-    &-item:last-child
-      margin-bottom: 0
-      padding-bottom: 0
-
-  .ispage
-    .top-menu
-      top: 65px
-      
-
-  .page-header
-    min-height: 360px
-    &-meta
-      h1
-        font-size: 21px
-        margin: 10px 0
-    &.overlay:before
-      background-image: linear-gradient(rgba(#000000, .3), rgba(#000000, 0.76))
-    &-content
-      bottom: 10%
-
-  .article-body
-    blockquote
-      margin: 0
-
-
+  .post-wrapper
+    grid-template-columns: repeat(2, 1fr)
 
 // ≥576px
 +media-breakpoint-down(xs)
-  .logo
-    font-size: 19px
-    padding-left: $gutter/2
-  .search-wrap
-    .search
-      padding-right:  $gutter/2
-
-  .four-section
-    padding: $gutter/2 0
-  
-  .type-one
-    .pattern
-      margin-bottom: $gutter/2
-
-nav.soc
-  padding: 10px 0 0 
-  li
-    a
-      width: 40px
-      height: 40px
-      font-size: 18px
-      line-height: 38px
-
-.all-post-header
-  margin-top: $gutter/2
+  .post-wrapper
+    grid-template-columns: repeat(1, 1fr)
 
 /*==========  Mobile First  ==========*/
 
