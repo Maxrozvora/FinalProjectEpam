@@ -10,15 +10,10 @@
   import Header from './components/Header'
   import Footer from './components/Footer'
 
-  import posts from "./data/posts"
-  import filters from "./data/filters"
-
   export default {
     name: 'App',
     data () {
       return {
-        posts,
-        filters,
         links: [
           {title: 'Головна', url: '/'},
           {title: 'Добавити фото', url: 'add-photo'},
