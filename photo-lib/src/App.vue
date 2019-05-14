@@ -1,11 +1,12 @@
 <template>
   <div id="app">
-    <app-header></app-header>
-    <app-body
-        :posts="posts"
-        :filters="filters"
-    ></app-body>
-    <app-footer></app-footer>
+    <app-header :links="links"></app-header>
+    <!--<app-body-->
+        <!--:posts="posts"-->
+        <!--:filters="filters"-->
+    <!--&gt;</app-body>-->
+    <router-view></router-view>
+    <app-footer :links="links"></app-footer>
   </div>
 </template>
 
@@ -22,7 +23,20 @@
     data () {
       return {
         posts,
-        filters
+        filters,
+        links: [
+          {title: 'Головна', url: '/'},
+          {title: 'Добавити фото', url: 'add-photo'},
+          {title: 'Контакти', url: 'contacts'},
+          {title: 'Profile', url: 'enter',
+            sublinks: [
+              {title: 'Profile', url: 'profile'},
+              {title: 'Вхід', url: 'enter'},
+              {title: 'Вихід', url: 'enter'}
+            ],
+
+          },
+        ]
       }
     },
     components: {

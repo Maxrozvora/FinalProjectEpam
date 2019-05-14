@@ -17,24 +17,25 @@
         <div class="mobile-menu-button"><i class="fa fa-bars"></i> Меню</div>
         <nav class="main-menu top-menu">
             <ul class="main-menu__list">
-                <li class="main-menu__item active"><a href="#" class="main-menu__link">Головна</a></li>
-                <li class="main-menu__item"><a href="#" class="main-menu__link">Контакти</a></li>
-                <li class="main-menu__item"><a href="#" class="main-menu__link">Добавити фото</a></li>
-                <li class="main-menu__item">
-                    <a href="#" class="main-menu__link">Профіль</a>
-                    <ul class="main-menu__sub-menu">
-                        <li class="main-menu__item-sub">
-                            <a href="#" class="main-menu__link">Вхід</a>
-                        </li>
-                        <li class="main-menu__item-sub">
-                            <a href="#" class="main-menu__link">Реєстрація</a>
-                        </li>
-                        <li class="main-menu__item-sub">
-                            <a href="#" class="main-menu__link">Вихід</a>
-                        </li>
+                <router-link
+                        v-for="link of links"
+                        :key="link.title"
+                        :to="link.url"
+                        tag="li"
+                        class="main-menu__item"
+                >
+                    <a class="main-menu__link">{{link.title}}</a>
+                    <ul v-if="link.sublinks" class="main-menu__sub-menu">
+                        <router-link
+                                v-for="(sublink, index) in link.sublinks"
+                                :key="index"
+                                :to="sublink.url"
+                                tag="li"
+                                class="main-menu__item-sub">
+                            <a class="main-menu__link">{{sublink.title}}</a>
+                        </router-link>
                     </ul>
-                </li>
-
+                </router-link>
             </ul>
         </nav>
     </header>
@@ -42,7 +43,10 @@
 
 <script>
     export default {
-        name: "Header"
+        name: "Header",
+        props: {
+            links: Array
+        }
     }
 </script>
 
