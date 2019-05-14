@@ -17,17 +17,8 @@
     import PostItem from '@/components/PostItem'
     import Slider from '@/components/Slider'
 
-    import posts from "../data/posts"
-    import filters from "../data/filters"
-
     export default {
         name: 'home',
-        data() {
-            return {
-                posts,
-                filters,
-            }
-        },
         computed: {
             getPost () {
                 return this.$store.getters.posts
