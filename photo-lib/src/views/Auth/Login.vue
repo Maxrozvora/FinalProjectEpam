@@ -1,6 +1,6 @@
 <template>
     <div class="from-wrapper">
-        <form class="form" ref="form">
+        <form class="form" @submit.prevent="onSubmit">
             <div class="input-group">
             <label for="email">Email</label>
                 <input
@@ -29,12 +29,9 @@
             </div>
 
             <button class="button" type="submit"
-                    @click="onSubmit"
+                    :disabled="$v.$invalid"
             >Вхід</button>
         </form>
-        <pre>
-            {{$v.email}}
-        </pre>
     </div>
 </template>
 
@@ -50,7 +47,7 @@
         },
         methods: {
             onSubmit () {
-               // logic
+               // console.log('email', this.email, 'pass', this.password); // TODO console.log
             }
         },
         validations: {

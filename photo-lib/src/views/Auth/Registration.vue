@@ -1,6 +1,6 @@
 <template>
     <div class="from-wrapper">
-        <form class="form">
+        <form class="form" @submit.prevent="onSubmit">
             <div class="input-group">
                 <label for="login">Логин</label>
                 <input
@@ -53,7 +53,9 @@
                         name="password">
                 <div class="invalid-feedback" v-if="!$v.confirm.sameAs">Паролі повинні співпадати</div>
             </div>
-            <button class="button" type="submit">Реєстрація</button>
+            <button
+                    :disabled="$v.$invalid"
+                    class="button" type="submit">Реєстрація</button>
         </form>
     </div>
 
@@ -72,6 +74,15 @@
                 confirm: ''
             }
     },
+        methods: {
+            onSubmit () {
+                // const user = {
+                //     login: this.login,
+                //     email: this.email,
+                //     password: this.password,
+                // }
+            }
+        },
         validations: {
             login: {
                 required
