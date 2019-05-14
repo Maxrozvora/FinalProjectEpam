@@ -23,6 +23,10 @@
 </script>
 <style scoped>
     .hooper {
+         height: auto;
+     }
+    .hooper-slide img {
+        width: 100%;
         height: auto;
     }
 </style>

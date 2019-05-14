@@ -5,9 +5,8 @@
         ></slider-item>
         <div class="post-wrapper">
             <post-item
-                    v-for="(post, index) in posts" :key="index"
+                    v-for="(post, index) in getPost" :key="index"
                     :post="post"
-                    :filter="filters[index]"
             ></post-item>
         </div>
     </div>
@@ -27,6 +26,11 @@
             return {
                 posts,
                 filters,
+            }
+        },
+        computed: {
+            getPost () {
+                return this.$store.getters.posts
             }
         },
         components: {
