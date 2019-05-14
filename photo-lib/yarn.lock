@@ -8214,6 +8214,11 @@ vuelidate@^0.7.4:
   resolved "https://registry.npm.taobao.org/vuelidate/download/vuelidate-0.7.4.tgz#5a0e54be09ac0192f1aa3387d74b92e0945bf8aa"
   integrity sha1-Wg5UvgmsAZLxqjOH10uS4JRb+Ko=
 
+vuex@^3.1.1:
+  version "3.1.1"
+  resolved "https://registry.npm.taobao.org/vuex/download/vuex-3.1.1.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fvuex%2Fdownload%2Fvuex-3.1.1.tgz#0c264bfe30cdbccf96ab9db3177d211828a5910e"
+  integrity sha1-DCZL/jDNvM+Wq52zF30hGCilkQ4=
+
 watchpack@^1.5.0:
   version "1.6.0"
   resolved "https://registry.npm.taobao.org/watchpack/download/watchpack-1.6.0.tgz#4bc12c2ebe8aa277a71f1d3f14d685c7b446cd00"
