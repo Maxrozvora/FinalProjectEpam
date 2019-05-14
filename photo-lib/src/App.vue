@@ -1,10 +1,6 @@
 <template>
   <div id="app">
     <app-header :links="links"></app-header>
-    <!--<app-body-->
-        <!--:posts="posts"-->
-        <!--:filters="filters"-->
-    <!--&gt;</app-body>-->
     <router-view></router-view>
     <app-footer :links="links"></app-footer>
   </div>
@@ -12,7 +8,6 @@
 
 <script>
   import Header from './components/Header'
-  import AppBody from './components/AppBody'
   import Footer from './components/Footer'
 
   import posts from "./data/posts"
