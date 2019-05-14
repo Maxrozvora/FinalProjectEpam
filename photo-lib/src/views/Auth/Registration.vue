@@ -1,5 +1,14 @@
 <template>
-    <h1>register</h1>
+    <div class="from-wrapper">
+        <form class="form">
+            <input type="text" class="input" placeholder="Логін" name="login">
+            <input type="email" class="input" placeholder="Email" name="emain">
+            <input type="password" class="input" placeholder="Пароль" name="password">
+            <input type="password" class="input" placeholder="Повторити пароль" name="repeat-password">
+            <button class="button" type="submit">Реєстрація</button>
+        </form>
+    </div>
+
 </template>
 
 <script>
@@ -8,6 +17,6 @@
     }
 </script>
 
-<style scoped>
+<style scoped lang="sass" src="../../styles/sass/form.sass">
 
 </style>
