@@ -11,12 +11,27 @@
   background: $dark
   max-width: 400px
 
+.input-group
+  margin-bottom: 15px
+
 .input
   width: 100%
   padding: 8px 15px
-  margin: 15px 0
+
   border: #383b40 1px solid
   background-color: #313438
   font-size: 16px
   color: #ffffff
   outline: none
+  &.invalid
+    border: $accent 1px solid
+  &.valid
+    border: green 1px solid
+label
+  margin-top: 5px
+  margin-bottom: 0
+  font-size: 16px
+
+.invalid-feedback
+  color: $accent
+  font-size: 12px

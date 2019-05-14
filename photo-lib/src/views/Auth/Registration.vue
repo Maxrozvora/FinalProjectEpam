@@ -2,7 +2,7 @@
     <div class="from-wrapper">
         <form class="form">
             <input type="text" class="input" placeholder="Логін" name="login">
-            <input type="email" class="input" placeholder="Email" name="emain">
+            <input type="email" class="input" placeholder="Email" name="email">
             <input type="password" class="input" placeholder="Пароль" name="password">
             <input type="password" class="input" placeholder="Повторити пароль" name="repeat-password">
             <button class="button" type="submit">Реєстрація</button>
