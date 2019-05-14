@@ -25,9 +25,9 @@
           {title: 'Контакти', url: 'contacts'},
           {title: 'Profile', url: 'enter',
             sublinks: [
-              {title: 'Profile', url: 'profile'},
-              {title: 'Вхід', url: 'enter'},
-              {title: 'Вихід', url: 'enter'}
+              {title: 'Вхід', url: 'login'},
+              {title: 'Реєстрація', url: 'register'},
+              {title: 'Вихід', url: 'exit'}
             ],
 
           },
@@ -35,7 +35,6 @@
       }
     },
     components: {
-      'app-body': AppBody,
       'app-header': Header,
       'app-footer': Footer
     }
