@@ -1,10 +1,58 @@
 <template>
     <div class="from-wrapper">
         <form class="form">
-            <input type="text" class="input" placeholder="Логін" name="login">
-            <input type="email" class="input" placeholder="Email" name="email">
-            <input type="password" class="input" placeholder="Пароль" name="password">
-            <input type="password" class="input" placeholder="Повторити пароль" name="repeat-password">
+            <div class="input-group">
+                <label for="login">Логин</label>
+                <input
+                        v-model="login"
+                        @blur="$v.login.$touch()"
+                        type="text"
+                        class="input"
+                        :class="{'invalid': $v.login.$error}"
+                        id="login"
+                        placeholder="Email"
+                        name="email">
+                <div class="invalid-feedback" v-if="$v.login.required">Логін обов'язковий</div>
+            </div>
+            <div class="input-group">
+                <label for="email">Email</label>
+                <input
+                        v-model="email"
+                        @blur="$v.email.$touch()"
+                        type="email"
+                        class="input"
+                        :class="{'invalid': $v.email.$error}"
+                        id="email"
+                        placeholder="Email"
+                        name="email">
+                <div class="invalid-feedback" v-if="!$v.email.email">Email обов'язковий</div>
+            </div>
+            <div class="input-group">
+                <label for="password">Пароль</label>
+                <input
+                        v-model="password"
+                        @blur="$v.password.$touch()"
+                        type="password"
+                        class="input"
+                        :class="{'invalid': $v.password.$error}"
+                        id="password"
+                        placeholder="Пароль"
+                        name="password">
+                <div class="invalid-feedback" v-if="!$v.password.minLength">Пароль повинен бути быльше 6-ти символів</div>
+            </div>
+            <div class="input-group">
+                <label for="confirm">Повторити пароль</label>
+                <input
+                        v-model="confirm"
+                        @blur="$v.confirm.$touch()"
+                        type="password"
+                        class="input"
+                        :class="{'invalid': $v.confirm.$error}"
+                        id="confirm"
+                        placeholder="Пароль"
+                        name="password">
+                <div class="invalid-feedback" v-if="!$v.confirm.sameAs">Паролі повинні співпадати</div>
+            </div>
             <button class="button" type="submit">Реєстрація</button>
         </form>
     </div>
@@ -12,8 +60,33 @@
 </template>
 
 <script>
+    import { required, email, minLength, sameAs } from 'vuelidate/lib/validators'
+
     export default {
-        name: "Registration"
+        name: "Registration",
+        data () {
+            return {
+                login: '',
+                email: '',
+                password: '',
+                confirm: ''
+            }
+    },
+        validations: {
+            login: {
+                required
+            },
+            email: {
+                required,
+                email
+            },
+            password: {
+                minLength: minLength(6)
+            },
+            confirm: {
+                sameAs: sameAs('password')
+            }
+        }
     }
 </script>
 
