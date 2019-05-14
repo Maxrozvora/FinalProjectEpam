@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Home from './views/Home'
 import Login from './views/Auth/Login'
 import Registration from './views/Auth/Registration'
+import UserPosts from './views/UserPosts'
 
 Vue.use(Router)
 
@@ -32,6 +33,11 @@ export default new Router({
       path: '/register',
       name: 'register',
       component: Registration
+    },
+    {
+      path: '/user/:id',
+      name: 'user',
+      component: UserPosts
     }
   ]
 })
