@@ -1,7 +1,7 @@
 <template>
     <div class="home">
         <slider-item
-            :posts="posts"
+            :posts="getTopPosts"
         ></slider-item>
         <div class="post-wrapper">
             <post-item
@@ -31,6 +31,9 @@
         computed: {
             getPost () {
                 return this.$store.getters.posts
+            },
+            getTopPosts () {
+                return this.$store.getters.getTopPosts
             }
         },
         components: {

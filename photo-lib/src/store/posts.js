@@ -39,6 +39,12 @@ export default {
     getters: {
         posts (state) {
             return state.posts
+        },
+        getTopPosts(state) {
+            const sortArr =  state.posts.sort((a,b) => {
+                return b.likes - a.likes
+            })
+            return sortArr.slice(0,4)
         }
     }
 }
