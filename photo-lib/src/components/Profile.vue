@@ -3,7 +3,7 @@
         <div class="profile__top">
             <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1211695/me_3.jpg" alt="Max Rozvora" class="profile__img">
             <div class="profile__count">
-                <div class="profile__number"></div>
+                <div class="profile__number">8</div>
                 <div class="profile__subtitle">Дописів</div>
             </div>
         </div>

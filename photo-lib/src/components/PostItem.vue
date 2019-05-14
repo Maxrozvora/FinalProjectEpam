@@ -1,9 +1,9 @@
 <template>
     <div class="post">
-            <div class="post__author">
+            <router-link tag="a" :to="'/user/' + post.username" class="post__author">
                 <img :src="post.userImage" :alt="post.username" class="post__avatar">
                 <span class="post__author-name">{{post.username}}</span>
-            </div>
+            </router-link>
             <div class="post__image"
                  :class="post.filter"
                  :style="{ backgroundImage: 'url(' + post.postImage + ')' }"
