@@ -40,9 +40,11 @@
                         name="password">
                 <div class="invalid-feedback" v-if="!$v.confirm.sameAs">Паролі повинні співпадати</div>
             </div>
+
             <button
                     :disabled="$v.$invalid"
                     class="button" type="submit">Реєстрація</button>
+            <span class="message" :class="{'hidden': !loading}">Йде створення акаунта</span>
         </form>
     </div>
 
@@ -61,6 +63,11 @@
                 confirm: ''
             }
     },
+        computed: {
+            loading () {
+                return this.$store.getters.loading
+            }
+        },
         methods: {
             onSubmit () {
                 const user = {
@@ -68,6 +75,10 @@
                     password: this.password,
                 }
                 this.$store.dispatch('registerUser', user)
+                .then(() => {
+                    this.$router.push('/')
+                })
+                .catch(error => console.log(error))
             }
         },
         validations: {
