@@ -2,19 +2,6 @@
     <div class="from-wrapper">
         <form class="form" @submit.prevent="onSubmit">
             <div class="input-group">
-                <label for="login">Логин</label>
-                <input
-                        v-model="login"
-                        @blur="$v.login.$touch()"
-                        type="text"
-                        class="input"
-                        :class="{'invalid': $v.login.$error}"
-                        id="login"
-                        placeholder="Email"
-                        name="email">
-                <div class="invalid-feedback" v-if="$v.login.required">Логін обов'язковий</div>
-            </div>
-            <div class="input-group">
                 <label for="email">Email</label>
                 <input
                         v-model="email"
@@ -76,17 +63,14 @@
     },
         methods: {
             onSubmit () {
-                // const user = {
-                //     login: this.login,
-                //     email: this.email,
-                //     password: this.password,
-                // }
+                const user = {
+                    email: this.email,
+                    password: this.password,
+                }
+                this.$store.dispatch('registerUser', user)
             }
         },
         validations: {
-            login: {
-                required
-            },
             email: {
                 required,
                 email
