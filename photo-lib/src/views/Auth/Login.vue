@@ -45,11 +45,6 @@
                 password: ''
             }
         },
-        computed: {
-            loading () {
-                return this.$store.getters.loading
-            }
-        },
         methods: {
             onSubmit () {
                    const user = {
