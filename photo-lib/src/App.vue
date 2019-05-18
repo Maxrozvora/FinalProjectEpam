@@ -12,20 +12,34 @@
 
   export default {
     name: 'App',
-    data () {
-      return {
-        links: [
+    computed: {
+      isUserLoggedIn () {
+        return this.$store.getters.isUserLoggedIn
+      },
+      links () {
+        if (this.isUserLoggedIn) {
+          return [
+            {title: 'Головна', url: '/'},
+            {title: 'Добавити фото', url: 'add-photo'},
+            {title: 'Контакти', url: 'contacts'},
+            {title: 'Profile', url: 'enter',
+              sublinks: [
+                {title: 'Вихід', url: 'exit'}
+              ],
+
+            }
+          ]
+        }
+        return [
           {title: 'Головна', url: '/'},
-          {title: 'Добавити фото', url: 'add-photo'},
           {title: 'Контакти', url: 'contacts'},
           {title: 'Profile', url: 'enter',
             sublinks: [
               {title: 'Вхід', url: 'login'},
-              {title: 'Реєстрація', url: 'register'},
-              {title: 'Вихід', url: 'exit'}
+              {title: 'Реєстрація', url: 'register'}
             ],
 
-          },
+          }
         ]
       }
     },

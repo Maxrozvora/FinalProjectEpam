@@ -23,5 +23,10 @@ new Vue({
       appId: '1:853675311253:web:7457b38c4e26734b'
     };
     firebase.initializeApp(firebaseConfig);
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        this.$store.dispatch('autoLoginUser', user)
+      }
+    })
 }
 }).$mount('#app')
