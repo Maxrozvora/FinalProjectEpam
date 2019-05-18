@@ -1,12 +1,13 @@
 import * as firebase from 'firebase'
 
 class Post {
-    constructor(imageSrc = '', description, likes = 0, ownerId, id = null) {
+    constructor(imageSrc = '', description, likes = 0, ownerId, id = null, hasBeenLike = false) {
         this.imageSrc = imageSrc
         this.description = description
         this.likes = likes
         this.ownerId = ownerId
         this.id = id
+        this.hasBeenLike = hasBeenLike
     }
 
 }
@@ -29,12 +30,12 @@ export default {
             commit('setLoading', true)
             
             try {
-                console.log(payload); // TODO console.log
                 const newPost = new Post(
                     payload.imageSrc,
                     payload.description,
                     payload.likes,
-                    getters.user.id
+                    getters.user.id,
+                    payload.hasBeenLike
                 )
                 const post = await firebase.database().ref('posts').push(newPost)
                 commit('setLoading', false)
@@ -59,7 +60,7 @@ export default {
                 Object.keys(posts).forEach(key => {
                     const post = posts[key]
                     resultPost.push(
-                        new Post(post.imageSrc, post.description, post.like, post.ownerId, key)
+                        new Post(post.imageSrc, post.description, post.like, post.ownerId, key, post.hasBeenLike)
                     )
                 })
                 commit('loadPost', resultPost)
