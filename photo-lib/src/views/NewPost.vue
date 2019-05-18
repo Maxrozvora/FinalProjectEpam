@@ -1,12 +1,16 @@
 <template>
     <form class="form" @submit.prevent="onSubmit">
         <div class="input-group">
-            <img class="image" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1211695/me_3.jpg">
-            <label for="image">Фото</label>
+            <img v-if="imageSrc" class="image" :src="imageSrc">
+            <div @click="triggerUpload" class="button mt-2">Загрузити фото <i class="fa fa-download"></i></div>
+        </div>
+        <div class="input-group d-none">
             <input
-                    v-model="image"
                     @blur="$v.image.$touch()"
-                    type="text"
+                    @change="onFileChange"
+                    ref="fileInput"
+                    type="file"
+                    accept="image/*"
                     class="input"
                     :class="{'invalid': $v.image.$error}"
                     id="image"
@@ -38,7 +42,8 @@
         name: "NewPost",
         data () {
             return {
-                image: '',
+                image: null,
+                imageSrc: '',
                 description: ''
             }
         },
@@ -58,7 +63,20 @@
                     .then(() => {
                         this.$router.push('/')
                     })
-        }
+        },
+            triggerUpload () {
+                this.$refs.fileInput.click()
+            },
+            onFileChange (event) {
+                const file = event.target.files[0]
+                const reader = new FileReader()
+                reader.onload = e => {
+                    this.imageSrc = reader.result
+
+                }
+                reader.readAsDataURL(file)
+                this.image = file
+            }
         },
         validations: {
             image: {
