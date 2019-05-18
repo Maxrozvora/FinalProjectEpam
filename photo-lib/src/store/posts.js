@@ -1,3 +1,16 @@
+import * as firebase from 'firebase'
+
+class Post {
+    constructor(imageSrc = '', description, likes = 0, ownerId, id = null) {
+        this.imageSrc = imageSrc
+        this.description = description
+        this.likes = likes
+        this.ownerId = ownerId
+        this.id = id
+    }
+
+}
+
 export default {
     state: {
         posts: [
@@ -34,8 +47,36 @@ export default {
             }
         ]
     },
-    mutations: {},
-    actions: {},
+    mutations: {
+        createPost (state, payload) {
+            state.posts.push(payload)
+        }
+    },
+    actions: {
+        async createPost ({commit, getters}, payload) {
+            commit('clearError')
+            commit('setLoading', true)
+            
+            try {
+                const newPost = new Post(
+                    payload.imageSrc,
+                    payload.description,
+                    payload.likes,
+                    getters.user.id
+                )
+                const post = await firebase.database().ref('posts').push(newPost)
+                commit('setLoading', false)
+                commit('createPost', {
+                    ...newPost,
+                    id: post.id
+                })
+            } catch (error) {
+                commit('setError', error.message)
+                commit('setLoading', false)
+                throw error
+            }
+        }
+    },
     getters: {
         posts (state) {
             return state.posts
