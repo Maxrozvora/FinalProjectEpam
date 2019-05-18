@@ -2,10 +2,10 @@
     <div id="user-profile">
         <profile-item></profile-item>
         <div class="post-wrapper">
-            <post-item
-                    v-for="(post, index) in getPost" :key="index"
-                    :post="post"
-            ></post-item>
+            <!--<post-item-->
+                    <!--v-for="(post, index) in getPost" :key="index"-->
+                    <!--:post="post"-->
+            <!--&gt;</post-item>-->
         </div>
     </div>
 </template>
