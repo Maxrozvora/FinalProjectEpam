@@ -6,7 +6,7 @@
             </router-link>
             <div class="post__image"
                  :class="post.filter"
-                 :style="{ backgroundImage: 'url(' + post.postImage + ')' }"
+                 :style="{ backgroundImage: 'url(' + post.imageSrc + ')' }"
                  @dblclick="like"
             >
             </div>
@@ -19,7 +19,7 @@
                     <span class="post__likes">{{post.likes}} подобається</span>
                 </div>
                 <span class="post__author-name">{{post.username}}</span>
-                <span class="post__caption">{{post.caption}}</span>
+                <span class="post__caption">{{post.description}}</span>
             </div>
         </div>
 </template>

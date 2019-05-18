@@ -1,7 +1,7 @@
 <template>
     <hooper :itemsToShow="4" :infiniteScroll="true">
         <slide v-for="(post, index) in posts" :key="index">
-            <img :src="post.postImage" :alt="post.caption">
+            <img :src="post.imageSrc" :alt="post.description">
         </slide>
     </hooper>
 </template>
