@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import AuthGuard from './auth-guard'
 import Home from './views/Home'
 import Login from './views/Auth/Login'
 import Registration from './views/Auth/Registration'
@@ -14,7 +15,8 @@ export default new Router({
     {
       path: '/',
       name: 'home',
-      component: Home
+      component: Home,
+      beforeEnter:AuthGuard
     },
     {
       path: '/about',

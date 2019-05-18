@@ -72,6 +72,11 @@
             password: {
                 minLength: minLength(6)
             }
+        },
+        created () {
+            if (this.$route.query['loginError']) {
+                this.$store.dispatch('setError', 'Будь ласка ввійдіть в систему')
+            }
         }
 
     }
