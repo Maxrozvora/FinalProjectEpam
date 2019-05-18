@@ -13,43 +13,14 @@ class Post {
 
 export default {
     state: {
-        posts: [
-            {
-                username: "socleansofreshh",
-                userImage: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/1211695/me_3.jpg",
-                postImage:
-                    "https://s3-us-west-2.amazonaws.com/s.cdpn.io/1211695/tropical_beach.jpg",
-                likes: 36,
-                hasBeenLiked: false,
-                caption: "When you're ready for summer '18 ☀️",
-                filter: "perpetua"
-            },
-            {
-                username: "djirdehh",
-                userImage: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/1211695/me2.png",
-                postImage:
-                    "https://s3-us-west-2.amazonaws.com/s.cdpn.io/1211695/downtown.jpg",
-                likes: 20,
-                hasBeenLiked: false,
-                caption: "Views from the six...",
-                filter: "clarendon"
-            },
-            {
-                username: "puppers",
-                userImage:
-                    "https://s3-us-west-2.amazonaws.com/s.cdpn.io/1211695/pug_personal.jpg",
-                postImage:
-                    "https://s3-us-west-2.amazonaws.com/s.cdpn.io/1211695/puppers.jpg",
-                likes: 49,
-                hasBeenLiked: false,
-                caption: "Current mood 🐶",
-                filter: "lofi"
-            }
-        ]
+        posts: []
     },
     mutations: {
         createPost (state, payload) {
             state.posts.push(payload)
+        },
+        loadPost (state, payload) {
+            state.posts = payload
         }
     },
     actions: {
@@ -58,6 +29,7 @@ export default {
             commit('setLoading', true)
             
             try {
+                console.log(payload); // TODO console.log
                 const newPost = new Post(
                     payload.imageSrc,
                     payload.description,
@@ -71,6 +43,27 @@ export default {
                     id: post.id
                 })
             } catch (error) {
+                commit('setError', error.message)
+                commit('setLoading', false)
+                throw error
+            }
+        },
+
+        async fetchPosts ({commit}) {
+            commit('clearError')
+            commit('setLoading', true)
+            const resultPost = []
+            try {
+                const fbVal = await firebase.database().ref('posts').once('value')
+                const posts = fbVal.val()
+                Object.keys(posts).forEach(key => {
+                    const post = posts[key]
+                    resultPost.push(
+                        new Post(post.imageSrc, post.description, post.like, post.ownerId, key)
+                    )
+                })
+                commit('loadPost', resultPost)
+            }  catch (error) {
                 commit('setError', error.message)
                 commit('setLoading', false)
                 throw error
