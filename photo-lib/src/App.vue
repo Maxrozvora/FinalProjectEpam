@@ -20,7 +20,7 @@
         if (this.isUserLoggedIn) {
           return [
             {title: 'Головна', url: '/'},
-            {title: 'Добавити фото', url: 'add-photo'},
+            {title: 'Добавити фото', url: 'new-post'},
             {title: 'Контакти', url: 'contacts'},
             {title: 'Profile', url: 'user/:id'}
           ]
