@@ -55,7 +55,7 @@
         methods: {
             onSubmit () {
                 const newPost = {
-                    imageSrc: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/1211695/tropical_beach.jpg',
+                    image: this.image,
                     description: this.description,
                     likes: 0
                 }

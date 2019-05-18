@@ -28,20 +28,30 @@ export default {
         async createPost ({commit, getters}, payload) {
             commit('clearError')
             commit('setLoading', true)
-            
+
+            const image = payload.image
+
             try {
                 const newPost = new Post(
-                    payload.imageSrc,
+                    '',
                     payload.description,
                     payload.likes,
                     getters.user.id,
                     payload.hasBeenLike
                 )
                 const post = await firebase.database().ref('posts').push(newPost)
+                const imageExt = image.name.slice(image.name.lastIndexOf('.'))
+                const fileData = await firebase.storage().ref(`post/${post.key}.${imageExt}`).put(image)
+
+                // const imageSrc = fileData.metadata.fullPath
+                // console.log(imageSrc); // TODO console.log
+                await firebase.database().ref('posts').child(post.key).update({imageSrc})
+
                 commit('setLoading', false)
                 commit('createPost', {
                     ...newPost,
-                    id: post.id
+                    id: post.id,
+                    imageSrc: imageSrc
                 })
             } catch (error) {
                 commit('setError', error.message)
