@@ -28,6 +28,7 @@
         <button class="button" type="submit"
                 :disabled="$v.$invalid"
         >Опублікувати</button>
+        <span class="message" :class="{'hidden': !loading}">Йде створення поста</span>
     </form>
 </template>
 
@@ -41,15 +42,21 @@
                 description: ''
             }
         },
+        computed: {
+            loading () {
+                return this.$store.getters.loading
+            }
+        },
         methods: {
             onSubmit () {
                 const newPost = {
                     image: this.image,
                     description: this.description,
-                    likes: 0
+                    likes: 0,
+                    imageSrc: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/1211695/tropical_beach.jpg'
                 }
-                // console.log(newPost); // TODO console.log
-            }
+                this.$store.dispatch('createPost', newPost)
+        }
         },
         validations: {
             image: {
