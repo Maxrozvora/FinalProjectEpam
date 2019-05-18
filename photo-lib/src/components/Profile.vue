@@ -24,6 +24,7 @@
         methods: {
             onLogOut () {
                 this.$store.dispatch('logoutUser')
+                this.$router.push('/')
             }
         }
     }
