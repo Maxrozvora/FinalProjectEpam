@@ -22,12 +22,7 @@
             {title: 'Головна', url: '/'},
             {title: 'Добавити фото', url: 'add-photo'},
             {title: 'Контакти', url: 'contacts'},
-            {title: 'Profile', url: 'enter',
-              sublinks: [
-                {title: 'Вихід', url: 'exit'}
-              ],
-
-            }
+            {title: 'Profile', url: 'user/:id'}
           ]
         }
         return [

@@ -10,6 +10,7 @@
                     <div class="profile__name"><span class="profile__subtitle">Логін: </span>Max Rozvora</div>
                     <div class="profile__email"><span class="profile__subtitle">Email: </span>max.rozvora@gmail.com</div>
                 </div>
+            <button @click="onLogOut" class="button">Вихід</button>
         </div>
 
 
@@ -19,7 +20,12 @@
 
 <script>
     export default {
-        name: "Profile"
+        name: "Profile",
+        methods: {
+            onLogOut () {
+                this.$store.dispatch('logoutUser')
+            }
+        }
     }
 </script>
 
