@@ -45,9 +45,23 @@
                 password: ''
             }
         },
+        computed: {
+            loading () {
+                return this.$store.getters.loading
+            }
+        },
         methods: {
             onSubmit () {
-               // console.log('email', this.email, 'pass', this.password); // TODO console.log
+                   const user = {
+                       email: this.email,
+                       password: this.password
+                   }
+
+                   this.$store.dispatch('loginUser', user)
+                       .then(() => {
+                           this.$router.push('/')
+                       })
+                       .catch(err => console.log(err))
             }
         },
         validations: {
