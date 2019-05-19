@@ -1,6 +1,6 @@
 <template>
     <header class="top-line">
-        <a href="/" class="logo logo-litera">PhotoTOP</a>
+        <router-link :to="'/'" tag="a" class="logo logo-litera">PhotoTOP</router-link>
         <div class="search-wrap">
             <div class="search" title="Поиск по сату">
                 <div class="fa fa-search"></div>
@@ -14,8 +14,8 @@
                 </form>
             </div>
         </div>
-        <div class="mobile-menu-button"><i class="fa fa-bars"></i> Меню</div>
-        <nav class="main-menu top-menu">
+        <div @click="toggleMobileNav" class="mobile-menu-button"><i class="fa fa-bars"></i> Меню</div>
+        <nav class="main-menu top-menu" :class="{active: toggleNav}">
             <ul class="main-menu__list">
                 <router-link
                         v-for="link of links"
@@ -46,6 +46,16 @@
         name: "Header",
         props: {
             links: Array
+        },
+        data() {
+            return {
+                toggleNav: false
+            }
+        },
+        methods: {
+            toggleMobileNav () {
+                this.toggleNav = !this.toggleNav
+            }
         }
     }
 </script>
