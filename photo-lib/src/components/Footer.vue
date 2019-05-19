@@ -4,12 +4,14 @@
 
                 <nav class="main-menu footer-menu">
                     <ul>
-                        <li class="active"><a href="#">Электроника</a></li>
-                        <li><a href="#">Новости IT</a></li>
-                        <li><a href="#">Обзоры</a></li>
-                        <li><a href="#">Лайфхаки</a></li>
-                        <li><a href="#">DIY</a></li>
-                        <li><a href="#">О Сайте</a></li>
+                        <router-link
+                                v-for="link of links"
+                                :key="link.title"
+                                :to="link.url"
+                                tag="li"
+                                >
+                            <a>{{link.title}}</a>
+                        </router-link>
                     </ul>
                 </nav>
                 <nav class="soc">
@@ -44,7 +46,10 @@
 
 <script>
     export default {
-        name: "Footer"
+        name: "Footer",
+        props: {
+            links: Array
+        }
     }
 </script>
 
