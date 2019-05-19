@@ -41,10 +41,12 @@ export default {
                 )
                 const post = await firebase.database().ref('posts').push(newPost)
                 const imageExt = image.name.slice(image.name.lastIndexOf('.'))
-                const fileData = await firebase.storage().ref(`post/${post.key}.${imageExt}`).put(image)
-
+                // const path = `post/${post.key}.${imageExt}`
+                // const fileData = await firebase.storage().ref(path).put(image)
+                //
+                // var storage = firebase.storage();
+                // var pathReference = storage.ref(path);
                 // const imageSrc = fileData.metadata.fullPath
-                // console.log(imageSrc); // TODO console.log
                 await firebase.database().ref('posts').child(post.key).update({imageSrc})
 
                 commit('setLoading', false)
