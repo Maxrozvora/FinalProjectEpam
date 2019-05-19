@@ -138,8 +138,17 @@
 
 @media (max-width: 992px)
   .main-menu
+    z-index: 5
     display: none
-    padding: 20px
+    padding: 0
+    &.active
+      display: block
+    &__item
+      display: block
+      border: none
+      border-bottom: 1px solid #545454
+      background-color: lighten($dark, 3)
+      z-index: 20
   .mobile-menu-button
     display: block
 
