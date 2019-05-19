@@ -1,7 +1,7 @@
 <template>
     <form class="form" @submit.prevent="onSubmit">
         <div class="input-group">
-            <img v-if="imageSrc" class="image" :src="imageSrc">
+            <img  class="image" src="../assets/nophoto.png">
             <div @click="triggerUpload" class="button mt-2">Загрузити фото <i class="fa fa-download"></i></div>
         </div>
         <div class="input-group d-none">
